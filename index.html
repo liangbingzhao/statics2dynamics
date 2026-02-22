@@ -117,7 +117,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Instruction-based image editing has achieved remarkable success in semantic alignment, yet state-of-the-art models frequently fail to render physically plausible results when editing involves complex causal dynamics, such as refraction or material deformation. We attribute this limitation to the dominant paradigm that treats editing as a discrete mapping between image pairs, which provides only boundary conditions and leaves transition dynamics underspecified.  To address this, we reformulate physics-aware editing as predictive physical state transitions and introduce PhysicTran38K, a large-scale video-based dataset comprising 38K transition trajectories across five physical domains, constructed via a two-stage filtering and constraint-aware annotation pipeline. Building on this supervision, we propose PhysicEdit, an end-to-end framework equipped with a textual-visual dual-thinking mechanism. It combines a frozen Qwen2.5-VL for physically grounded reasoning with learnable transition queries that provide timestep-adaptive visual guidance to a diffusion backbone. Experiments show that \model improves over Qwen-Image-Edit by 5.9\% in physical realism and 10.1\% in knowledge-grounded editing, setting a new state-of-the-art for open-source methods, while remaining competitive with leading proprietary models.
+            Instruction-based image editing has achieved remarkable success in semantic alignment, yet state-of-the-art models frequently fail to render physically plausible results when editing involves complex causal dynamics, such as refraction or material deformation. We attribute this limitation to the dominant paradigm that treats editing as a discrete mapping between image pairs, which provides only boundary conditions and leaves transition dynamics underspecified.  To address this, we reformulate physics-aware editing as predictive physical state transitions and introduce PhysicTran38K, a large-scale video-based dataset comprising 38K transition trajectories across five physical domains, constructed via a two-stage filtering and constraint-aware annotation pipeline. Building on this supervision, we propose PhysicEdit, an end-to-end framework equipped with a textual-visual dual-thinking mechanism. It combines a frozen Qwen2.5-VL for physically grounded reasoning with learnable transition queries that provide timestep-adaptive visual guidance to a diffusion backbone. Experiments show that PhysicEdit improves over Qwen-Image-Edit by 5.9% in physical realism and 10.1\% in knowledge-grounded editing, setting a new state-of-the-art for open-source methods, while remaining competitive with leading proprietary models.
           </p>
         </div>
       </div>
@@ -126,6 +126,22 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Data -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-sixths">
+        <h2 class="title is-3">PhysicTran38K: a video-based dataset for physics-aware image editing</h2>
+        <h2 class="content has-text-justified">
+          <strong>Overview of the PhysicTran38K construction pipeline.</strong> Starting from hierarchical physics categories, we synthesize videos using Wan2.2-T2V-A14B, filtered by ViPE with an adaptive strategy to preserve high-dynamic transitions. Candidate videos conduct principle-driven verification by GPT-5-mini, adhering to a rigorous retention rule. Finally, Qwen2.5-VL-7B performs constraint-aware annotation, generating instructions and structured reasoning while incorporating verification results to prevent hallucinations.
+        </h2>
+        <img src="static/images/data.jpg" width="80%"/>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Data -->
+
 <!-- Paper Method -->
 <section class="section hero">
   <div class="container is-max-desktop">
@@ -133,30 +149,16 @@
       <div class="column is-five-sixths">
         <h2 class="title is-3">Method Overview</h2>
         <h2 class="content has-text-justified">
-          Overall pipeline of <strong>ReflectionFlow</strong> framework with both qualitative and quantitative results of scaling compute at inference time.
+          <strong>Overview of the \model framework.</strong> (a) Training: We distill physical transition priors from video data into learnable transition queries. These queries are supervised by complementary visual features extracted from intermediate keyframes. (b) Inference: PhysicEdit follows a sequential workflow. The frozen MLLM first generates physically-grounded reasoning, which is then concatenated with the learned transition queries to serve as the condition for the diffusion backbone.
         </h2>
-        <img src="static/images/teaser_page-0001.jpg" width="80%"/>
+        <img src="static/images/physical_edit.jpg" width="80%"/>
       </div>
     </div>
   </div>
 </section>
 <!-- End paper method -->
 
-<!-- Data -->
-<section class="section hero">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-five-sixths">
-        <h2 class="title is-3">Reflection Dataset: GenRef</h2>
-        <h2 class="content has-text-justified">
-          Construction pipelines and statistics of our <strong>GenRef</strong> dataset. We collect our reflection triplets (flawed images, enhanced images, textual reflections) from four distinct data sources, including: rule-based data, reward-based data, long-short prompt data, and editing data.
-        </h2>
-        <img src="static/images/data_page-0001.jpg" width="80%"/>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End Data -->
+
 
 <!-- Qualitative -->
 <section class="section hero">
@@ -164,7 +166,7 @@
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-sixths">
         <h2 class="title is-3">Qualitative Results</h2>
-        <img src="static/images/quantitative_page.jpg" width="80%"/>
+        <img src="static/images/small_qualitative.jpg" width="80%"/>
       </div>
     </div>
   </div>
@@ -172,7 +174,7 @@
 <!-- End Quantitaive -->
 
 <!-- Complex reasoning -->
-<section class="section hero">
+<!-- <section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-sixths">
@@ -181,11 +183,11 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End Quantitaive -->
   
 <!-- Mainexp -->
-<section class="section hero">
+<!-- <section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-sixths">
@@ -197,7 +199,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 <!-- End Mainexp -->
 
 <!--BibTex citation -->
