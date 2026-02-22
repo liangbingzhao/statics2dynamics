@@ -126,12 +126,36 @@
 </section>
 <!-- End paper abstract -->
 
+<!-- Motivation -->
+<section class="section hero">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-five-sixths">
+        <h2 class="title is-3">Motivation</h2>
+        
+        <div class="content has-text-justified">
+          <p>
+            <strong>Bridging semantic alignment and physical plausibility.</strong> 
+            Existing editing models achieve high semantic fidelity yet frequently violate physical principles, as they learn discrete image mappings with underspecified constraints. 
+            We reformulate editing as a <b>Physical State Transition</b>, leveraging continuous dynamics to steer generation from 
+            <span style="color:red;">unreal hallucinations</span> toward 
+            <span style="color:green;">physically valid trajectories</span>.
+          </p>
+        </div>
+
+        <img src="static/images/teasor.jpg" alt="Motivation Teaser" width="80%"/>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Motivation -->
+
 <!-- Data -->
 <section class="section hero">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-five-sixths">
-        <h2 class="title is-3">PhysicTran38K: a video-based dataset for physics-aware image editing</h2>
+        <h2 class="title is-3">PhysicTran38K: Video-based dataset of physical state transition</h2>
         <h2 class="content has-text-justified">
           <strong>Overview of the PhysicTran38K construction pipeline.</strong> Starting from hierarchical physics categories, we synthesize videos using Wan2.2-T2V-A14B, filtered by ViPE with an adaptive strategy to preserve high-dynamic transitions. Candidate videos conduct principle-driven verification by GPT-5-mini, adhering to a rigorous retention rule. Finally, Qwen2.5-VL-7B performs constraint-aware annotation, generating instructions and structured reasoning while incorporating verification results to prevent hallucinations.
         </h2>
@@ -149,7 +173,7 @@
       <div class="column is-five-sixths">
         <h2 class="title is-3">Method Overview</h2>
         <h2 class="content has-text-justified">
-          <strong>Overview of the \model framework.</strong> (a) Training: We distill physical transition priors from video data into learnable transition queries. These queries are supervised by complementary visual features extracted from intermediate keyframes. (b) Inference: PhysicEdit follows a sequential workflow. The frozen MLLM first generates physically-grounded reasoning, which is then concatenated with the learned transition queries to serve as the condition for the diffusion backbone.
+          <strong>Overview of the PhysicEdit framework.</strong> (a) Training: We distill physical transition priors from video data into learnable transition queries. These queries are supervised by complementary visual features extracted from intermediate keyframes. (b) Inference: PhysicEdit follows a sequential workflow. The frozen MLLM first generates physically-grounded reasoning, which is then concatenated with the learned transition queries to serve as the condition for the diffusion backbone.
         </h2>
         <img src="static/images/physical_edit.jpg" width="80%"/>
       </div>
